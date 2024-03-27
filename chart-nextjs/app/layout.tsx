@@ -66,7 +66,7 @@ function RootLayout({ children }: RootLayoutProps) {
       <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </Content>
       <Footer style={{ textAlign: 'center' }}>
-        Ant Design ©{new Date().getFullYear()} Created by Ant UED
+        KoolCharts ©{new Date().getFullYear()} Created by jbin with Antd, Antv/G2
       </Footer>
     </Layout>
     
