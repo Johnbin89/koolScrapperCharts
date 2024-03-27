@@ -29,8 +29,12 @@ interface RootLayoutProps {
 function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
+      <head>
+        <meta charSet="utf-" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      </head>
     <body>
-    <Layout>
+    <Layout style={{minHeight: '100vh'}}>
       <Header
         style={{
           position: 'sticky',
@@ -48,7 +52,7 @@ function RootLayout({ children }: RootLayoutProps) {
             marginRight: '16px'
           }}
         >
-          KoolCharts
+          <Link href="/">KoolCharts</Link>
         </div>
         <Menu
           theme="dark"
@@ -58,7 +62,7 @@ function RootLayout({ children }: RootLayoutProps) {
           style={{ flex: 1, minWidth: 0 }}
         />
       </Header>
-      <Content style={{ padding: '0 48px' }}>
+      <Content style={{ padding: '0 48px'}}>
       <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </Content>
       <Footer style={{ textAlign: 'center' }}>
