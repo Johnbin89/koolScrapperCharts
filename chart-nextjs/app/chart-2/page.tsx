@@ -40,7 +40,7 @@ const Chart2 = () => {
         <div id='container' 
           style={{
             padding: 24,
-            minHeight: '82dvh',
+            minHeight: '80dvh',
             background: "#e7eff7",
             borderRadius: 4,
             boxSizing: 'border-box'
