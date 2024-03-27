@@ -3,9 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import StyledComponentsRegistry from "./AntdRegistry";
 import "./globals.css";
-import { Typography, Layout, Menu, theme } from 'antd';
-import Text from 'antd/lib/typography'
-import BreadcrumbItem from "antd/lib/breadcrumb/BreadcrumbItem";
+import { Layout, Menu, theme } from 'antd';
 import { Header, Content, Footer } from 'antd/lib/layout/layout';
 import Link from "next/link";
 
