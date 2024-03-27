@@ -1,4 +1,3 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -38,18 +37,21 @@ driver = webdriver.Chrome(options=options, seleniumwire_options=proxy_options)
 #navigate to the site
 driver.get("https://www.marinetraffic.com/en/ais/home/centerx:-12.0/centery:25.0/zoom:4")
 wait = WebDriverWait(driver, 300)
-wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="qc-cmp2-ui"]/div[2]/div/button[2]'))).click()
+wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="qc-cmp2-ui"]/div[2]/div/button[2]'))).click() #accept cookies
+
+'''
+# -  Login  -
 wait.until(EC.element_to_be_clickable((By.ID, 'login'))).click()
 wait.until(EC.element_to_be_clickable((By.ID, 'email')))
 wait.until(EC.element_to_be_clickable((By.ID, 'password')))
-
-
 #login_button = driver.find_element(By.ID, 'login')
 #login_button.click()
 login_source = driver.page_source
-
 soup = BeautifulSoup(login_source)
 print(soup.prettify())
+# -  Login  -
+'''
+
 
 #close browser
 #driver.quit()
