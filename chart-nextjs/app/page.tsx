@@ -22,8 +22,8 @@ const HomePage = () => {
       transform: [{ type: "stackY" }],
       interaction: { elementHighlight: { background: true } },
     });
-    chart.axisX().attr('title', 'Vessel').style('titleFontSize', 20);;
-    chart.axisY().attr('title', 'Total Laytime').style('titleFontSize', 20);;
+    chart.axisX().attr('title', 'Vessel').style('titleFontSize', 15)
+    chart.axisY().attr('title', 'Total Laytime').style('titleFontSize', 15)
     chart.render()
   }}, [dataChart1]);
 
@@ -36,11 +36,11 @@ const HomePage = () => {
       type: "interval",
       autoFit: true,
       data: dataChart2.recordset,
-      encode: { x: "VNAME", y: "GenAvgDeadTimePerBerthing" },
+      encode: { x: "VNAME", y: "GenAvgDeadTimePerBerthing", size: 15 },
       interaction: { elementHighlight: { background: true } },
     });
-    chart.axisX().attr('title', 'Vessel').style('titleFontSize', 20);
-    chart.axisY().attr('title', 'Average Dead Time per Berthing').style('titleFontSize', 20);;
+    chart.axisX().attr('title', null).style('labelFontSize', 12).style('labelFormatter', (d: any) => `${d.length > 5 ? d.substring(0, 5) + '...' : d}`);
+    chart.axisY().attr('title', 'Average Dead Time per Berthing').style('titleFontSize', 12).style('labelFontSize', 12);
     chart.render()
   }}, [dataChart2]);
 
@@ -56,8 +56,8 @@ const HomePage = () => {
       encode: { x: (d: any) => new Date(d.DT), y: "AllBerths" },
       interaction: { elementHighlight: { background: true } },
     });
-    chart.axisX().attr('title', 'DateTime').style('titleFontSize', 20);;
-    chart.axisY().attr('title', 'Daily Berth Occupancy').style('titleFontSize', 20);
+    chart.axisX().attr('title', 'DateTime').style('titleFontSize', 15);
+    chart.axisY().attr('title', 'Daily Berth Occupancy').style('titleFontSize', 15);
     chart.render()
   }}, [dataChart3]);
 
@@ -86,6 +86,9 @@ const HomePage = () => {
         position: 'inside',
         text: (data: any) => `${data.name}`,
         transform: [{ type: 'overflowHide' }],
+        style: {
+          fontSize: 10,
+        },
       })
       .tooltip((data) => ({
         name: data.name,
@@ -106,7 +109,7 @@ return (
             padding: 24,
             background: "#e7eff7",
             borderRadius: 3,
-            maxHeight: '37vh'
+            maxHeight: '32vh'
           }}
         >
         </div>
@@ -120,7 +123,7 @@ return (
             padding: 24,
             background: "#e7eff7",
             borderRadius: 3,
-            maxHeight: '37vh'
+            maxHeight: '32vh'
           }}
         >
         </div>
@@ -134,7 +137,7 @@ return (
             padding: 24,
             background: "#e7eff7",
             borderRadius: 3,
-            maxHeight: '37vh'
+            maxHeight: '32vh'
           }}
         >
         </div>
@@ -148,7 +151,7 @@ return (
             padding: 24,
             background: "#e7eff7",
             borderRadius: 3,
-            maxHeight: '37vh'
+            maxHeight: '32vh'
           }}
         >
         </div>
