@@ -1,9 +1,16 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from bs4 import BeautifulSoup
-import random
+import random, os
 from seleniumwire import webdriver
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+from dotenv import load_dotenv
+dotenv_file = os.path.join(basedir, '.env')
+if os.path.isfile(dotenv_file):
+    load_dotenv(dotenv_file)
 
 #create an instance of ChromeOptions
 options = webdriver.ChromeOptions()
@@ -41,6 +48,8 @@ wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="qc-cmp2-ui"]/div[2]/d
 
 '''
 # -  Login  -
+username = os.environ.get('USER_EMAIL') or input("Enter Email address:")
+password= os.environ.get('PASSWORD') or input("Enter password:")
 wait.until(EC.element_to_be_clickable((By.ID, 'login'))).click()
 wait.until(EC.element_to_be_clickable((By.ID, 'email')))
 wait.until(EC.element_to_be_clickable((By.ID, 'password')))
@@ -51,6 +60,22 @@ soup = BeautifulSoup(login_source)
 print(soup.prettify())
 # -  Login  -
 '''
+
+# - Vessel Search - 
+vessels = ['KRITI VIGOR', 'DERYOUNG_SPRING']
+wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="searchMarineTraffic"]')))
+search_bar = driver.find_element(By.XPATH, '//*[@id="searchMarineTraffic"]')
+search_bar.send_keys('KRITI VIGOR')
+search_bar.send_keys(Keys.RETURN)
+
+wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="vesselDetails_generalSection"]')))
+wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="vesselDetails_aisInfoSection"]')))
+vessel_source = driver.page_source
+soup = BeautifulSoup(vessel_source)
+print(soup.prettify())
+print('*'*20)
+print(soup.title)
+
 
 
 #close browser
